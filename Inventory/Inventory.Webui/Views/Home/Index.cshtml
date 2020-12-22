@@ -1,0 +1,54 @@
+﻿@model ItemViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    
+    
+}
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.items.)*@
+                    id
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.InventoryCode)*@
+                    Type
+
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Type)*@
+                    Inventory Code
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <div>
+                @foreach (var item in Model.items)
+                {
+                    @*<div>
+                        <span>@item.Id</span>
+                        <span>@item.Type</span>
+                        <span>@item.InventoryCode</span>
+                    </div>*@
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
+                    <td>
+                        @item.InventoryCode
+                    </td>
+                   
+                </tr>
+                }
+            </div>
+            </tbody>
+    </table>

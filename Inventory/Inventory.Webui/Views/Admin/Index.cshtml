@@ -1,0 +1,138 @@
+﻿@model UserItemListModel
+@{
+    ViewData["Title"] = "Home Page";
+
+
+}
+@if (TempData["message"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                @TempData["message"]
+            </div>
+        </div>
+    </div>
+}
+@if (TempData["additem"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning">
+                @TempData["additem"]
+            </div>
+        </div>
+    </div>
+}
+
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+<h3>User List</h3>
+<table class="table">
+
+    <thead>
+        <tr>
+
+            <th>
+
+                Firstname
+            </th>
+            <th>
+
+                Lastname
+            </th>
+            <th>
+
+                Email
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <div>
+            @foreach (var user in Model.users)
+            {
+                @*<div>
+                        <span>@item.Id</span>
+                        <span>@item.Type</span>
+                        <span>@item.InventoryCode</span>
+                    </div>*@
+                <tr>
+                    <td>
+                        @user.Name
+                    </td>
+                    <td>
+                        @user.LastName
+                    </td>
+                    <td>
+                        @user.Email
+                    </td>
+
+                </tr>
+            }
+        </div>
+    </tbody>
+</table>
+
+<h3>Item List</h3>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.items.)*@
+                id
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.InventoryCode)*@
+                Type
+
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Type)*@
+                Inventory Code
+            </th>
+            <th>
+                Username
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <div>
+            @foreach (var item in Model.items)
+            {
+                @*<div>
+                        <span>@item.Id</span>
+                        <span>@item.Type</span>
+                        <span>@item.InventoryCode</span>
+                    </div>*@
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
+                    <td>
+                        @item.InventoryCode
+                    </td>
+                    <td>
+
+                        @item.user
+                    </td>
+                    <td>
+                        @Html.ActionLink("ChangeUser", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </div>
+    </tbody>
+</table>
